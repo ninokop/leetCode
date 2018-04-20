@@ -1,6 +1,10 @@
 package list
 
-import "testing"
+import (
+	"fmt"
+	"log"
+	"testing"
+)
 
 func TestReverseList(t *testing.T) {
 	l1 := NewListNode(1)
@@ -52,4 +56,43 @@ func TestReverseBetween(t *testing.T) {
 		t.Errorf("l4.PopFront = %d, want 5", n)
 	}
 
+}
+
+func TestReverseKGroup(t *testing.T) {
+	log.Println("TestReverseKGroup")
+	l1 := NewListNode(1)
+	for i := 2; i <= 10; i++ {
+		l1.PushBack(i)
+	}
+
+	l2 := reverseKGroup(l1, 3)
+	for i := 10; i > 0; i-- {
+		fmt.Printf("%d ", l2.PopFront())
+	}
+	fmt.Printf("\n")
+}
+
+func TestSwapNodesInPairs(t *testing.T) {
+	log.Println("TestSwapNodesInPairs")
+	l1 := NewListNode(1)
+	for i := 2; i <= 10; i++ {
+		l1.PushBack(i)
+	}
+
+	l2 := swapPairs(l1)
+	for i := 1; i <= 10; i++ {
+		n := l2.PopFront()
+		fmt.Printf("%d ", n)
+	}
+	fmt.Printf("\n")
+}
+
+func TestSwapNodesInPairs2(t *testing.T) {
+	l1 := NewListNode(1)
+	l2 := swapPairs(l1)
+
+	n := l2.PopFront()
+	if n != 1 {
+		t.Errorf("l2.PopFront = %d, want 1", n)
+	}
 }
